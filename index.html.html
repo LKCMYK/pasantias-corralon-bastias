@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corralón Bastías S.A. - Punto de Autoconsulta & Presupuestos Rápidos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Branding -->
+    <header class="bg-amber-600 text-white shadow-lg border-b-4 border-amber-800">
+        <div class="max-w-7xl mx-mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2 rounded-lg text-amber-600 shadow">
+                    <i data-lucide="building-2" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold tracking-tight">CORRALÓN BASTÍAS S.A.</h1>
+                    <p class="text-xs text-amber-100 font-medium">San Martín 40 • Terminal de Autoconsulta & Presupuesto Rápido</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="bg-amber-700/80 text-amber-50 text-xs px-3 py-1.5 rounded-full font-semibold border border-amber-500/30">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 inline mr-1"></i> Propuesta PGM 2026
+                </span>
+                <span class="bg-emerald-500 text-white text-xs px-3 py-1.5 rounded-full font-bold shadow animate-pulse flex items-center gap-1">
+                    <span class="w-2 h-2 bg-white rounded-full"></span> SISTEMA ACTIVO
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subheader Navigation / Tabs -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 flex overflow-x-auto space-x-2 py-2" id="nav-tabs">
+            <button onclick="switchTab('presupuestador')" id="tab-presupuestador" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 shadow-sm">
+                <i data-lucide="calculator" class="w-4 h-4"></i> 1. Ficha de Presupuesto Rápido
+            </button>
+            <button onclick="switchTab('senaletica')" id="tab-senaletica" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 text-slate-600 hover:bg-slate-100">
+                <i data-lucide="map-pin" class="w-4 h-4"></i> 2. Mapa de Señalética por Zonas
+            </button>
+            <button onclick="switchTab('diagrama')" id="tab-diagrama" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 text-slate-600 hover:bg-slate-100">
+                <i data-lucide="git-circuit" class="w-4 h-4"></i> 3. Circuito de Atención Optimizado
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- TAB 1: PRESUPEUSTADOR RÁPIDO -->
+        <section id="sec-presupuestador" class="tab-content space-y-6">
+            <div class="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 rounded-2xl shadow-md flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h2 class="text-xl font-bold">¡Bienvenido al Punto de Autoconsulta!</h2>
+                    <p class="text-sm text-amber-100 mt-1">Selecciona el combo o materiales para tu obra y calcula un presupuesto estimado al instante sin hacer filas en el mostrador.</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 text-center min-w-[160px]">
+                    <span class="text-xs uppercase tracking-wider text-amber-200 block font-semibold">Atención Estimada</span>
+                    <span class="text-lg font-black">2 MINUTOS</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Combos de Obra (2 cols) -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                        <i data-lucide="package" class="w-5 h-5 text-amber-600"></i> Combos Populares de Obra Rápida
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Combo 1 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:border-amber-400 transition-all cursor-pointer group flex flex-col justify-between" onclick="addCombo('Combo Baño Completo (Sanitarios + Grifería)', 385000, 'Zona 2: Fin de Obra')">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <span class="bg-blue-100 text-blue-800 text-[11px] font-extrabold px-2 py-0.5 rounded">ZONA 2 • FIN DE OBRA</span>
+                                    <span class="text-xs text-emerald-600 font-bold">Stock Disponible</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mt-2 group-hover:text-amber-600 transition-colors">Combo Baño Completo</h4>
+                                <p class="text-xs text-slate-500 mt-1">Inodoro largo, mochila, bidet, lavatorio con columna y grifería monocomando.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center pt-3 border-t border-slate-100">
+                                <span class="text-lg font-black text-slate-900">$385.000</span>
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Combo 2 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:border-amber-400 transition-all cursor-pointer group flex flex-col justify-between" onclick="addCombo('Combo 10m² Cerámica + Pegamento + Pastina', 145000, 'Zona 2: Revestimientos')">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <span class="bg-blue-100 text-blue-800 text-[11px] font-extrabold px-2 py-0.5 rounded">ZONA 2 • REVESTIMIENTOS</span>
+                                    <span class="text-xs text-emerald-600 font-bold">Stock Disponible</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mt-2 group-hover:text-amber-600 transition-colors">Combo 10m² Cerámica Piso/Pared</h4>
+                                <p class="text-xs text-slate-500 mt-1">10 m² Cerámica 45x45 + 2 bolsas pegamento Klaukol + 1 kg pastina fina.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center pt-3 border-t border-slate-100">
+                                <span class="text-lg font-black text-slate-900">$145.000</span>
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Combo 3 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:border-amber-400 transition-all cursor-pointer group flex flex-col justify-between" onclick="addCombo('Kit Ferretería & Fijaciones Esenciales', 48500, 'Zona 1: Ferretería')">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <span class="bg-amber-100 text-amber-800 text-[11px] font-extrabold px-2 py-0.5 rounded">ZONA 1 • FERRETERÍA</span>
+                                    <span class="text-xs text-emerald-600 font-bold">Stock Disponible</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mt-2 group-hover:text-amber-600 transition-colors">Kit Ferretería & Fijaciones</h4>
+                                <p class="text-xs text-slate-500 mt-1">Caja organizadora, juego de tarugos y tornillos surtidos + cinta métrica 5m.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center pt-3 border-t border-slate-100">
+                                <span class="text-lg font-black text-slate-900">$48.500</span>
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Combo 4 -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:border-amber-400 transition-all cursor-pointer group flex flex-col justify-between" onclick="addCombo('Pack Cemento Avellaneda (10 Bolsas)', 110000, 'Zona 3: Depósito / Acopio')">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <span class="bg-slate-200 text-slate-800 text-[11px] font-extrabold px-2 py-0.5 rounded">ZONA 3 • GALPÓN ACOPIO</span>
+                                    <span class="text-xs text-emerald-600 font-bold">Alta Rotación</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mt-2 group-hover:text-amber-600 transition-colors">Pack Cemento 50kg (10 Bolsas)</h4>
+                                <p class="text-xs text-slate-500 mt-1">Cemento Loma Negra / Avellaneda de alta resistencia estructural.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center pt-3 border-t border-slate-100">
+                                <span class="text-lg font-black text-slate-900">$110.000</span>
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Summary Ticket (1 col) -->
+                <div class="bg-white p-5 rounded-2xl shadow-md border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center pb-3 border-b border-slate-200">
+                            <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                                <i data-lucide="file-text" class="w-5 h-5 text-amber-600"></i> Tu Ficha Preliminar
+                            </h3>
+                            <button onclick="clearTicket()" class="text-xs text-rose-600 hover:underline font-semibold">Limpiar</button>
+                        </div>
+
+                        <!-- Ticket Items Container -->
+                        <div id="ticket-items" class="py-4 space-y-3 min-h-[180px] max-h-[300px] overflow-y-auto">
+                            <div class="text-center text-slate-400 text-xs py-8" id="empty-msg">
+                                <i data-lucide="shopping-bag" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
+                                Toca un combo para generar tu presupuesto preliminar.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Totals & Actions -->
+                    <div class="pt-4 border-t border-slate-200 space-y-3">
+                        <div class="flex justify-between text-xs text-slate-500">
+                            <span>Subtotal estimado:</span>
+                            <span id="subtotal-val" class="font-semibold text-slate-700">$0</span>
+                        </div>
+                        <div class="flex justify-between text-base font-black text-slate-900">
+                            <span>TOTAL ESTIMADO:</span>
+                            <span id="total-val" class="text-amber-600 text-xl">$0</span>
+                        </div>
+                        
+                        <button onclick="printTicket()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all">
+                            <i data-lucide="qr-code" class="w-5 h-5"></i> Imprimir Ficha / Código QR
+                        </button>
+                        <p class="text-[10px] text-center text-slate-400">Presenta este código en mostrador para caja rápida sin demoras.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: SEÑALÉTICA COMERCIAL Y MAPA -->
+        <section id="sec-senaletica" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2 mb-2">
+                    <i data-lucide="map" class="w-6 h-6 text-amber-600"></i> Mapa de Distribución por Zonas Comerciales
+                </h2>
+                <p class="text-xs text-slate-500 mb-6">Propuesta de cartelera de señalética visual por código de colores instalada en el salón principal de Corralón Bastías S.A.</p>
+
+                <!-- Visual Grid Layout of Store -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
+                    
+                    <!-- Zone 1 -->
+                    <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-amber-600 text-white font-black text-xs px-2.5 py-1 rounded-md">ZONA 1</span>
+                                <i data-lucide="wrench" class="w-6 h-6 text-amber-600"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">Ferretería & Bulonería</h3>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1">
+                                <li>• Herramientas Eléctricas y Manuales</li>
+                                <li>• Tornillería, Bulones y Clavos</li>
+                                <li>• Discos de corte, abrasivos y mechas</li>
+                                <li>• Pinturas y accesorios</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-amber-200/60 text-[11px] font-semibold text-amber-800">
+                            📍 Frente al mostrador principal
+                        </div>
+                    </div>
+
+                    <!-- Zone 2 -->
+                    <div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-blue-600 text-white font-black text-xs px-2.5 py-1 rounded-md">ZONA 2</span>
+                                <i data-lucide="bath" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">Fin de Obra & Showroom</h3>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1">
+                                <li>• Cerámicas, Porcellanatos y Venecitas</li>
+                                <li>• Juego de Sanitarios y Mochilas</li>
+                                <li>• Griferías, Espejos y Vanitorys</li>
+                                <li>• Pegamentos y Pastinas</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-blue-200/60 text-[11px] font-semibold text-blue-800">
+                            📍 Salón lateral derecho
+                        </div>
+                    </div>
+
+                    <!-- Zone 3 -->
+                    <div class="bg-slate-100 border-2 border-slate-400 rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-slate-800 text-white font-black text-xs px-2.5 py-1 rounded-md">ZONA 3</span>
+                                <i data-lucide="truck" class="w-6 h-6 text-slate-700"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">Galpón de Depósito & Acopio</h3>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1">
+                                <li>• Bolsas de Cemento, Cal y Yeso</li>
+                                <li>• Hierros de construcción y mallas</li>
+                                <li>• Áridos (Arena, Ripio, Pelullo)</li>
+                                <li>• Ladrillos y Bloques</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-300 text-[11px] font-semibold text-slate-700">
+                            📍 Portón posterior de carga pesada
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: DIAGRAMA DE FLUJO / CIRCUITO MEJORADO -->
+        <section id="sec-diagrama" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2 mb-2">
+                    <i data-lucide="git-pull-request" class="w-6 h-6 text-amber-600"></i> Circuito Operativo Comparativo
+                </h2>
+                <p class="text-xs text-slate-500 mb-6">Rediseño del flujo de atención al cliente implementando el tótem de autoconsulta y presupuestos rápidos.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Circuit A: Actual -->
+                    <div class="bg-rose-50 border border-rose-200 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2 text-rose-800 font-bold text-sm pb-2 border-b border-rose-200">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-rose-600"></i> Circuito Anterior (Tradicional)
+                        </div>
+                        <ol class="text-xs space-y-2 text-slate-700 list-decimal list-inside">
+                            <li class="p-2 bg-white rounded border border-rose-100">Cliente llega al local y hace fila en mostrador general.</li>
+                            <li class="p-2 bg-white rounded border border-rose-100">El vendedor consulta el catálogo y calcula presupuestos manualmente.</li>
+                            <li class="p-2 bg-white rounded border border-rose-100">Demora media en horarios pico: <strong>20 a 30 minutos</strong>.</li>
+                            <li class="p-2 bg-white rounded border border-rose-100">Riesgo de pérdida de ventas por cansancio en la espera.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Circuit B: Optimized -->
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2 text-emerald-800 font-bold text-sm pb-2 border-b border-emerald-200">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i> Circuito Propuesto (PGM 2026)
+                        </div>
+                        <ol class="text-xs space-y-2 text-slate-700 list-decimal list-inside">
+                            <li class="p-2 bg-white rounded border border-emerald-100">Cliente ingresa y consulta directa en Tótem/Pantalla de Autoconsulta.</li>
+                            <li class="p-2 bg-white rounded border border-emerald-100">Imprime o escanea la Ficha de Presupuesto Rápido con Código QR.</li>
+                            <li class="p-2 bg-white rounded border border-emerald-100">Pasa directamente a Caja Rápida o emisión de factura final.</li>
+                            <li class="p-2 bg-white rounded border border-emerald-100"><strong>Reducción del 40% del tiempo de espera</strong> y descongestión del salón.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-semibold text-slate-300">Proyecto Interdisciplinario de Pasantías • Proyectos y Gestión de Microemprendimientos (PGM)</p>
+            <p>Prof. Romina Canales — 2026 • Empresa: Corralón Bastías S.A. (San Martín 40)</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        // State Management
+        let ticket = [];
+        let total = 0;
+
+        // Switch Tabs
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-amber-50', 'text-amber-700', 'border', 'border-amber-200', 'shadow-sm', 'font-bold');
+                el.classList.add('font-semibold', 'text-slate-600');
+            });
+
+            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.add('bg-amber-50', 'text-amber-700', 'border', 'border-amber-200', 'shadow-sm', 'font-bold');
+            activeBtn.classList.remove('text-slate-600');
+        }
+
+        // Add Item to Ticket
+        function addCombo(name, price, zone) {
+            ticket.push({ id: Date.now(), name, price, zone });
+            renderTicket();
+        }
+
+        // Remove Item
+        function removeItem(id) {
+            ticket = ticket.filter(item => item.id !== id);
+            renderTicket();
+        }
+
+        // Clear Ticket
+        function clearTicket() {
+            ticket = [];
+            renderTicket();
+        }
+
+        // Render Ticket DOM
+        function renderTicket() {
+            const container = document.getElementById('ticket-items');
+            const emptyMsg = document.getElementById('empty-msg');
+            
+            if (ticket.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-slate-400 text-xs py-8" id="empty-msg">
+                        <i data-lucide="shopping-bag" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
+                        Toca un combo para generar tu presupuesto preliminar.
+                    </div>
+                `;
+                lucide.createIcons();
+                document.getElementById('subtotal-val').innerText = '$0';
+                document.getElementById('total-val').innerText = '$0';
+                return;
+            }
+
+            container.innerHTML = '';
+            total = 0;
+
+            ticket.forEach(item => {
+                total += item.price;
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-xs';
+                div.innerHTML = `
+                    <div>
+                        <p class="font-bold text-slate-800">${item.name}</p>
+                        <span class="text-[10px] text-amber-700 font-semibold">${item.zone}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold text-slate-900">$${item.price.toLocaleString('es-AR')}</span>
+                        <button onclick="removeItem(${item.id})" class="text-rose-500 hover:text-rose-700 p-1">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            lucide.createIcons();
+            document.getElementById('subtotal-val').innerText = `$${total.toLocaleString('es-AR')}`;
+            document.getElementById('total-val').innerText = `$${total.toLocaleString('es-AR')}`;
+        }
+
+        // Print Ticket Action
+        function printTicket() {
+            if (ticket.length === 0) {
+                alert('Por favor agrega al menos un combo de material para generar el ticket.');
+                return;
+            }
+            alert(`✅ ¡Ficha de Presupuesto Rápido Generada!\n\nTotal estimado: $${total.toLocaleString('es-AR')}\n\nPuede presentar el código de esta pantalla en el mostrador de Corralón Bastías S.A. para ser atendido sin demoras.`);
+        }
+    </script>
+</body>
+</html>
